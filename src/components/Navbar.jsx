@@ -2,7 +2,7 @@ import React from "react";
 
 const Navbar = () => {
   return (
-    <header className="bg-nav-black px-11 h-20 font-bold text-white flex items-center justify-between">
+    <header className="bg-nav-black px-4 sm:px-11 h-20 font-bold text-white flex items-center justify-between">
       <div className="logo">
         <a href="/" className="font-roboto text-4xl">
           Edvora
