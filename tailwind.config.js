@@ -1,7 +1,11 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      maxWidth: {
+        "8xl": "90rem"
+      }
+    },
     colors: {
       // bg
       "nav-black": "#101010",

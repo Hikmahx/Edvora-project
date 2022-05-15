@@ -2,15 +2,15 @@ import React from "react";
 
 const TabHeader = () => {
   return (
-    <div className="my-7 px-4 sm:px-11 flex justify-between items-start sm:items-center">
-      <div className="tabs-header text-tab-text flex font-normal sm:text-lg">
-        <div className="mr-11">
+    <div className="my-7 px-4 sm:px-11 flex justify-between items-start md:items-center">
+      <div className="tabs-header text-tab-text flex flex-col sm:flex-row font-normal sm:text-lg uppercase lg:normal-case">
+        <div className="md:mr-11 mb-4 md:mb-0">
           <h2 className="">Nearest rides</h2>
         </div>
-        <div className="mr-11">
+        <div className="md:mr-11 mb-4 md:mb-0">
           <h2 className="">Upcoming rides</h2>
         </div>
-        <div className="mr-11">
+        <div className="md:mr-11 mb-4 md:mb-0">
           <h2 className="">Past rides</h2>
         </div>
       </div>

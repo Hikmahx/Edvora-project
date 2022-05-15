@@ -16,8 +16,8 @@ const CardItem = () => {
         </ul>
       </div>
       <div className="filter-btns font-medium text-xl lg:text-xs text-white flex flex-col lg:flex-row justify-between lg:block">
-          <button className="bg-black px-2 py-2 lg:py-1 rounded-2xl lg:mr-4 xl:mr-8 mb-5 lg:mb-0">City Name</button>
-          <button className="bg-black px-2 py-2 lg:py-1 rounded-2xl">State Name</button>
+          <button className="bg-black px-2 py-2 lg:py-1 rounded-2xl lg:mr-4 xl:mr-8 mb-5 lg:mb-0 hover:bg-white transition-all hover:text-black transition-all">City Name</button>
+          <button className="bg-black px-2 py-2 lg:py-1 rounded-2xl hover:bg-white transition-all hover:text-black transition-all">State Name</button>
       </div>
     </div>
   );

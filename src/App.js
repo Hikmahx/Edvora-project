@@ -5,9 +5,9 @@ import TabHeader from "./components/TabHeader";
 
 const App = () => {
   return (
-    <div className="App w-full bg-main-black">
+    <div className="App w-full min-h-screen bg-main-black">
       <Navbar />
-      <main className="font-inter">
+      <main className="font-inter max-w-lg lg:max-w-8xl mx-auto">
         <TabHeader />
         <Cards />
       </main>
