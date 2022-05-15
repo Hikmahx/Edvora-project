@@ -17,7 +17,7 @@ const Filter = () => {
             alt="inverted-triangle"
             className="absolute right-4 top-3"
           />
-          <select className="bg-select-black text-white appearance-none border-none inline-block py-2 pl-3 pr-8 rounded leading-tight w-full">
+          <select className="bg-select-black text-white appearance-none border-none inline-block py-2 pl-3 pr-8 rounded leading-tight w-full cursor-pointer">
             <option className="pt-6">State</option>
             {states.map((rideState, index) => (
               <option key={index} value={rideState}>
@@ -32,7 +32,7 @@ const Filter = () => {
             alt="inverted-triangle"
             className="absolute right-4 top-3"
           />
-          <select className="bg-select-black text-white appearance-none border-none inline-block py-2 pl-3 pr-8 rounded leading-tight w-full">
+          <select className="bg-select-black text-white appearance-none border-none inline-block py-2 pl-3 pr-8 rounded leading-tight w-full cursor-pointer">
             <option className="pt-6">City</option>
             {cities.map((city, index) => (
               <option key={index} value={city}>
