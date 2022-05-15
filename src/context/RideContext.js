@@ -31,11 +31,11 @@ export const RideProvider = ({ children }) => {
     });
     dispatch({
       type: "GET_STATES",
-      payload: data.map((ride) => ride.state),
+      payload: data.map((ride) => ride.state).sort(),
     });
     dispatch({
       type: "GET_CITIES",
-      payload: data.map((ride) => ride.city),
+      payload: data.map((ride) => ride.city).sort(),
     });
   };
 
