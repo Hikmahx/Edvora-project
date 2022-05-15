@@ -4,9 +4,10 @@ import RideReducer from "./RideReducer";
 const RideContext = createContext();
 
 export const RideProvider = ({ children }) => {
-
   const initialState = {
-    rides: []
+    rides: [],
+    states: [],
+    cities: []
   };
 
   const [state, dispatch] = useReducer(RideReducer, initialState);
@@ -23,11 +24,19 @@ export const RideProvider = ({ children }) => {
   const getRides = async () => {
     const res = await fetch("https://assessment.api.vweb.app/rides");
     const data = await res.json();
-    console.log(data);
+
     dispatch({
-      type: "GET_RIDES", 
-      payload: data
-    })
+      type: "GET_RIDES",
+      payload: data,
+    });
+    dispatch({
+      type: "GET_STATES",
+      payload: data.map((ride) => ride.state),
+    });
+    dispatch({
+      type: "GET_CITIES",
+      payload: data.map((ride) => ride.city),
+    });
   };
 
   return (
@@ -35,6 +44,8 @@ export const RideProvider = ({ children }) => {
       value={{
         filterBox,
         rides: state.rides,
+        states: state.states,
+        cities: state.cities,
         toggleFilterBox,
       }}
     >
