@@ -1,10 +1,10 @@
 const RideReducer = (state, action) => {
   switch (action.type) {
-    // case "TOGGLE_FILTER":
-    //   return {
-    //     ...state,
-    //     filterBox: false,
-    //   };
+    case "GET_RIDES":
+      return {
+        ...state,
+        rides: action.payload,
+      };
     default:
       return state;
   }
