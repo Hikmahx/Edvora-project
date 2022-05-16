@@ -20,7 +20,7 @@ const Cards = () => {
         </>
       ) : (
         <>
-          <p className="text-center">{errMsg}. Reload page</p>
+          <p className="text-center text-white">{errMsg}. Reload page</p>
         </>
       )}
     </div>
