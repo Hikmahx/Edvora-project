@@ -57,7 +57,6 @@ export const RideProvider = ({ children }) => {
   const filterValues = () => {
     // Check if the select option's value isn't State
     if (state.filterState !== "State") {
-      console.log("It is not equal state");
       dispatch({
         type: "GET_FILTER_RIDES",
         // CHECK IF ANY RIDE OF THAT STATE EXISTS
@@ -67,7 +66,6 @@ export const RideProvider = ({ children }) => {
 
     // Check if the select option's value isn't City
     if (state.filterCity !== "City") {
-      console.log("It is not equal city");
       dispatch({
         type: "GET_FILTER_RIDES",
         // CHECK IF ANY RIDE OF THAT CITY EXISTS
@@ -101,7 +99,18 @@ export const RideProvider = ({ children }) => {
       type: "SET_STATE",
       payload: e.target.value,
     });
-    setfilterBox(false)
+    setfilterBox(false);
+
+    // ENSURE STATE CLICKED REFLECTS ON THE SELECT OPTIONS TAG
+      if (e.target.localName === "button") {
+      let selectState = document.getElementsByTagName("select")[0];
+      selectState.childNodes.forEach((state, index) => {
+        if (state.innerText === state.filterState) {
+          console.log(index);
+          selectState.selectedIndex = index;
+        }
+      });
+    }
   };
 
   const filterByCities = (e) => {
@@ -110,6 +119,17 @@ export const RideProvider = ({ children }) => {
       payload: e.target.value,
     });
     setfilterBox(false);
+
+    // ENSURE CITY CLICKED REFLECTS ON THE SELECT OPTIONS TAG
+    if (e.target.localName === "button") {
+      let selectCity = document.getElementsByTagName("select")[1];
+      selectCity.childNodes.forEach((city, index) => {
+        if (city.innerText === state.filterCity) {
+          console.log(index);
+          selectCity.selectedIndex = index;
+        }
+      });
+    }
   };
 
   return (
