@@ -11,6 +11,9 @@ export const RideProvider = ({ children }) => {
     filterRides: [],
     filterState: "State",
     filterCity: "City",
+    loading: false,
+    errMsg: "",
+    error: false,
   };
 
   const [state, dispatch] = useReducer(RideReducer, initialState);
@@ -18,7 +21,8 @@ export const RideProvider = ({ children }) => {
 
   useEffect(() => {
     getRides();
-  }, []);
+    // eslint-disable-next-line
+  }, []); 
 
   useEffect(() => {
     filterValues();
@@ -30,28 +34,37 @@ export const RideProvider = ({ children }) => {
   };
 
   const getRides = async () => {
-    const res = await fetch("https://assessment.api.vweb.app/rides");
-    const data = await res.json();
+    try {
+      setLoading();
 
-    dispatch({
-      type: "GET_RIDES",
-      payload: data,
-    });
+      const res = await fetch("https://assessment.api.vweb.app/rides");
+      const data = await res.json();
 
-    dispatch({
-      type: "GET_STATES",
-      payload: data.map((ride) => ride.state).sort(),
-    });
+      dispatch({
+        type: "GET_RIDES",
+        payload: data,
+      });
 
-    dispatch({
-      type: "GET_CITIES",
-      payload: data.map((ride) => ride.city).sort(),
-    });
+      dispatch({
+        type: "GET_STATES",
+        payload: data.map((ride) => ride.state).sort(),
+      });
 
-    dispatch({
-      type: "GET_FILTER_RIDES",
-      payload: data,
-    });
+      dispatch({
+        type: "GET_CITIES",
+        payload: data.map((ride) => ride.city).sort(),
+      });
+
+      dispatch({
+        type: "GET_FILTER_RIDES",
+        payload: data,
+      });
+    } catch (err) {
+      dispatch({
+        type: "SET_ERROR",
+        payload: err.message,
+      });
+    }
   };
 
   const filterValues = () => {
@@ -102,7 +115,7 @@ export const RideProvider = ({ children }) => {
     setfilterBox(false);
 
     // ENSURE STATE CLICKED REFLECTS ON THE SELECT OPTIONS TAG
-      if (e.target.localName === "button") {
+    if (e.target.localName === "button") {
       let selectState = document.getElementsByTagName("select")[0];
       selectState.childNodes.forEach((state, index) => {
         if (state.innerText === state.filterState) {
@@ -132,6 +145,12 @@ export const RideProvider = ({ children }) => {
     }
   };
 
+  // Set loading
+  const setLoading = () =>
+    dispatch({
+      type: "SET_LOADING",
+    });
+
   return (
     <RideContext.Provider
       value={{
@@ -140,6 +159,9 @@ export const RideProvider = ({ children }) => {
         filterRides: state.filterRides,
         states: state.states,
         cities: state.cities,
+        loading: state.loading,
+        errMsg: state.errMsg,
+        error: state.error,
         toggleFilterBox,
         filterByStates,
         filterByCities,

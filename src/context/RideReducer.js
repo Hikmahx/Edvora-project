@@ -4,6 +4,7 @@ const RideReducer = (state, action) => {
       return {
         ...state,
         rides: action.payload,
+        error: false,
       };
     case "GET_FILTER_RIDES":
       return {
@@ -29,6 +30,19 @@ const RideReducer = (state, action) => {
       return {
         ...state,
         filterState: action.payload,
+      };
+    case "SET_LOADING":
+      return {
+        ...state,
+        loading: true,
+      };
+
+    case "SET_ERROR":
+      return {
+        ...state,
+        loading: false,
+        error: true,
+        errMsg: action.payload,
       };
     default:
       return state;

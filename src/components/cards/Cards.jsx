@@ -3,13 +3,26 @@ import RideContext from "../../context/RideContext";
 import CardItem from "./CardItem";
 
 const Cards = () => {
-  const { filterRides } = useContext(RideContext);
+  const { filterRides, loading, errMsg, error } = useContext(RideContext);
   return (
     <div className="cards px-4 sm:px-11 pb-8 mt-10 lg:mt-0">
-      {filterRides.map((ride, index)=>(
-        <CardItem key={index} ride={ride} />
-
-      ))}
+      {!error ? (
+        <>
+          {loading ? (
+            <h2 className="text-white">Loading...</h2>
+          ) : (
+            <>
+              {filterRides.map((ride, index) => (
+                <CardItem key={index} ride={ride} />
+              ))}
+            </>
+          )}
+        </>
+      ) : (
+        <>
+          <p className="text-center">{errMsg}. Reload page</p>
+        </>
+      )}
     </div>
   );
 };
