@@ -5,6 +5,11 @@ const RideReducer = (state, action) => {
         ...state,
         rides: action.payload,
       };
+    case "GET_FILTER_RIDES":
+      return {
+        ...state,
+        filterRides: action.payload,
+      };
     case "GET_STATES":
       return {
         ...state,
@@ -14,6 +19,16 @@ const RideReducer = (state, action) => {
       return {
         ...state,
         cities: Array.from(new Set(action.payload)),
+      };
+    case "SET_CITY":
+      return {
+        ...state,
+        filterCity: action.payload,
+      };
+    case "SET_STATE":
+      return {
+        ...state,
+        filterState: action.payload,
       };
     default:
       return state;
