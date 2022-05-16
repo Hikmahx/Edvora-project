@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
+import RideContext from "../../context/RideContext";
 
 const CardItem = ({ride}) => {
+  const { filterByStates, filterByCities } = useContext(RideContext);
+
   const rideDate = (date)=>{
     return new Date(date).toString().slice(0, 24)
   }
@@ -22,10 +25,10 @@ const CardItem = ({ride}) => {
         </ul>
       </div>
       <div className="filter-btns font-medium text-xl lg:text-xs text-white flex flex-col lg:flex-row justify-between lg:block">
-        <button className="bg-black px-2 py-2 lg:py-1 rounded-2xl lg:mr-4 xl:mr-8 mb-5 lg:mb-0 hover:bg-white transition-all hover:text-black transition-all">
+        <button value={ride.city} onClick={filterByCities} className="bg-black px-2 py-2 lg:py-1 rounded-2xl lg:mr-4 xl:mr-8 mb-5 lg:mb-0 hover:bg-white transition-all hover:text-black transition-all">
           {ride.city}
         </button>
-        <button className="bg-black px-2 py-2 lg:py-1 rounded-2xl hover:bg-white transition-all hover:text-black transition-all">
+        <button value={ride.state} onClick={filterByStates} className="bg-black px-2 py-2 lg:py-1 rounded-2xl hover:bg-white transition-all hover:text-black transition-all">
           {ride.state}
         </button>
       </div>
