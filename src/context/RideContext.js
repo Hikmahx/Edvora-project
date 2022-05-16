@@ -86,7 +86,7 @@ export const RideProvider = ({ children }) => {
         }),
       });
     }
-    
+
     if (state.filterState === "State" && state.filterCity === "City") {
       dispatch({
         type: "GET_FILTER_RIDES",
@@ -101,6 +101,7 @@ export const RideProvider = ({ children }) => {
       type: "SET_STATE",
       payload: e.target.value,
     });
+    setfilterBox(false)
   };
 
   const filterByCities = (e) => {
@@ -108,6 +109,7 @@ export const RideProvider = ({ children }) => {
       type: "SET_CITY",
       payload: e.target.value,
     });
+    setfilterBox(false);
   };
 
   return (
