@@ -26,7 +26,7 @@ const TabHeader = () => {
             Filters
           </h2>
         </div>
-        {filterBox && <Filter />}
+      <Filter />
       </div>
     </div>
   );
